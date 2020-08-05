@@ -28,7 +28,7 @@ const HeaderLinks = styled("div")`
   }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    grid-gap: 2.5em;
+    grid-gap: 1.5em;
   }
 
   a {

@@ -67,17 +67,6 @@ const AboutBio = styled("div")`
   }
 `
 
-const AboutActions = styled("div")`
-  padding-top: 1em;
-  padding-bottom: 3em;
-
-  @media (max-width: ${dimensions.maxwidthMobile}px) {
-    padding: 0;
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-`
-
 const About = ({ bio, socialLinks }) => (
   <AboutContainer>
     <AboutLinkContainer>
@@ -93,12 +82,12 @@ const About = ({ bio, socialLinks }) => (
         </AboutLink>
       ))}
     </AboutLinkContainer>
-    <AboutBio>{RichText.render(bio)}</AboutBio>
-    <AboutActions>
+    <AboutBio>
+      {RichText.render(bio)}
       <Link to="/contact">
         <Button className="Button--secondary">Contact</Button>
       </Link>
-    </AboutActions>
+    </AboutBio>
   </AboutContainer>
 )
 
