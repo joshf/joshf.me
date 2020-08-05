@@ -18,7 +18,7 @@ const Hero = styled("div")`
   max-width: 830px;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    margin-bottom: 6em;
+    margin-bottom: 8em;
   }
 
   h1 {
