@@ -19,7 +19,6 @@ const ProjectHeroContainer = styled("div")`
 
   img {
     max-width: 600px;
-    height: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
   }

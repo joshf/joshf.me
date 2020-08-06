@@ -146,7 +146,6 @@ const ProjectCardImageContainer = styled("div")`
   }
 
   img {
-    height: 100%;
     padding-top: 2em;
     padding-bottom: 2em;
     max-width: 400px;
