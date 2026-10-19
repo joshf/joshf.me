@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  --bg: #fbfbfa;
+  --fg: #111010;
+  --muted: #5f6164;
+  --border: #e4e4e2;
+  --surface: #f2f2f0;
+  --accent: #3a67b2;
+  --primary: #3a67b2;
+  --primary-hover: #01ff46;
+  --secondary: #e3efff;
+  --secondary-fg: #4b84e5;
+  --secondary-hover: #cbdfff;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0e0f;
+  --fg: #ececea;
+  --muted: #9a9b9d;
+  --border: #26272a;
+  --surface: #17181a;
+  --accent: #73abff;
+  --primary: #3a67b2;
+  --primary-hover: #01ff46;
+  --secondary: #192c4c;
+  --secondary-fg: #73abff;
+  --secondary-hover: #2a4a7f;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] .astro-code,
+[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  border-radius: 2px;
+  padding: 0.5rem 1.1rem;
+  font-weight: 600;
+  transition: background 100ms ease-in-out, color 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  color: #111010;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--secondary-fg);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-hover);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}

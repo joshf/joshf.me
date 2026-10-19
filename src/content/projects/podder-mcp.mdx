@@ -1,0 +1,23 @@
+---
+title: MCP server for podcast analytics
+description: A remote Model Context Protocol server that lets AI agents like Claude query Podder analytics directly.
+company: Podder
+year: '2026'
+tags: [MCP, AI Agents, Cloudflare Workers, OAuth, TypeScript]
+order: 6
+featured: true
+---
+
+## Why
+
+Customers increasingly want to ask questions of their analytics in tools like Claude, not only in a dashboard.
+
+## What
+
+A remote **Model Context Protocol** server on Cloudflare Workers exposes the platform to any MCP-capable client.
+
+- **Secure by default.** OAuth sign-in, so agents only see what the user is allowed to see.
+- **Typed tools.** Every tool has a validated schema, so agents call it correctly.
+- **Responses built for LLMs.** Results come back in formats that models read reliably.
+
+The platform can now be queried in plain English from any MCP-capable client.

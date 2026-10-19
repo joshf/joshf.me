@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getProjects } from '../../utils/content';
+
+const projects = await getProjects();
+
+const earlier = [
+  { title: 'Booking engine', company: 'Stay U-nique', description: 'Guest booking engine in React, styled-components and Bootstrap.' },
+  { title: 'Maintenance app', company: 'Stay U-nique', description: 'Issue tracking for tourist apartment operations.' },
+  { title: 'Attis backend', company: 'Attis', description: 'Back-office system for an insurance company in Next.js and React.' },
+];
+---
+
+<Layout title="Projects" description="Case studies and selected work by Josh Fradley.">
+  <h1 class="mb-3 text-3xl font-semibold tracking-tight">Projects</h1>
+  <p class="text-muted">Write-ups of systems I've designed, built and run in production.</p>
+
+  <Section title="case studies">
+    <div class="grid gap-4">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </Section>
+
+  <Section title="earlier work">
+    <ul class="divide-y divide-border">
+      {
+        earlier.map((item) => (
+          <li class="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <span>
+              {item.title} <span class="text-sm text-muted">· {item.description}</span>
+            </span>
+            <span class="shrink-0 font-mono text-xs text-muted">{item.company}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</Layout>

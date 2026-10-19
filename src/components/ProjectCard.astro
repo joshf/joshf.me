@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Tags from './Tags.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, description, company, year, tags } = project.data;
+---
+
+<a
+  href={`/projects/${project.id}`}
+  class="group block rounded-lg border border-border p-5 transition-colors hover:border-accent"
+>
+  <div class="mb-1 flex items-baseline justify-between gap-4">
+    <h3 class="font-semibold group-hover:text-accent">{title}</h3>
+    <span class="shrink-0 font-mono text-xs text-muted">{company} · {year}</span>
+  </div>
+  <p class="mb-4 text-sm text-muted">{description}</p>
+  <Tags tags={tags} />
+</a>

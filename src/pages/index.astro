@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Tags from '../components/Tags.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PostList from '../components/PostList.astro';
+import { experience } from '../data/experience';
+import { site, socials, stack } from '../data/site';
+import { getPosts, getProjects } from '../utils/content';
+
+const featured = (await getProjects()).filter((p) => p.data.featured);
+const posts = (await getPosts()).slice(0, 3);
+---
+
+<Layout>
+  <section>
+    <p class="mb-4 font-mono text-sm text-accent">~/barcelona</p>
+    <h1 class="mb-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+      Josh Fradley
+    </h1>
+    <p class="text-lg leading-relaxed text-muted">
+      CTO at Podder and IT Team Lead at Kuupanda. I build and run production SaaS from start to finish: the data
+      model, the APIs, the edge, the UI and the LLM features on top. I also lead the team building them. 6+ years shipping across agritech,
+      SaaS, podcast analytics and hospitality.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3 font-mono text-sm">
+      <a href="#contact" class="btn-primary">get in touch</a>
+      <a href="/projects" class="btn-secondary">view work</a>
+    </div>
+  </section>
+
+  <Section title="about">
+    <div class="space-y-4 leading-relaxed">
+      <p>
+        At <strong>Kuupanda</strong>, a platform that helps local food producers sell directly to buyers, I built
+        the producer mini-sites, the customer order form and checkout, and the back-office purchase invoicing and
+        customer messaging.
+      </p>
+      <p>
+        As CTO of <strong>Podder</strong> I built the entire podcast analytics platform end to end: cross-promotion tracking on Cloudflare Workers, audience
+        personas, Beam pipelines into BigQuery, a NestJS API and React dashboard, and an MCP server for AI agents.
+      </p>
+      <p>
+        <strong>AI in production:</strong> audience personas, review insights, an in-app assistant and an MCP
+        server, built with the Vercel AI SDK on Claude and OpenAI models.
+      </p>
+      <p>
+        I care about type safety, test-driven development and domain-driven design.
+      </p>
+    </div>
+    <div class="mt-6">
+      <Tags tags={stack} />
+    </div>
+  </Section>
+
+  <Section title="experience">
+    <ol class="relative space-y-10 border-l border-border pl-6">
+      {
+        experience.map((job) => (
+          <li class="relative">
+            <span class="absolute top-1.5 -left-[29px] size-2.5 rounded-full border-2 border-bg bg-accent" />
+            <div class="mb-1 flex flex-col sm:flex-row sm:items-baseline sm:justify-between">
+              <h3 class="font-semibold">
+                {job.href ? <a href={job.href} class="hover:text-accent">{job.company}</a> : job.company}
+                <span class="font-normal text-muted"> · {job.role}</span>
+              </h3>
+              <span class="font-mono text-xs text-muted">{job.period}</span>
+            </div>
+            <p class="mb-3 text-sm text-muted">{job.summary}</p>
+            <ul class="mb-3 list-disc space-y-1 pl-4 text-sm marker:text-border">
+              {job.highlights.map((h) => <li>{h}</li>)}
+            </ul>
+            <Tags tags={job.tags} />
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section title="selected work" more={{ href: '/projects', label: 'all projects' }}>
+    <div class="grid gap-4">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </Section>
+
+  {
+    posts.length > 0 && (
+      <Section title="writing" more={{ href: '/blog', label: 'all posts' }}>
+        <PostList posts={posts} />
+      </Section>
+    )
+  }
+
+  <Section title="contact" id="contact">
+    <p class="mb-6 text-muted">
+      Open to interesting projects, consulting and leadership roles. Drop me a line or find me on{' '}
+      {socials.map((s, i) => (
+        <>
+          <a href={s.href} class="text-fg underline decoration-border underline-offset-4 hover:decoration-accent">{s.label}</a>{i < socials.length - 1 ? ', ' : '.'}
+        </>
+      ))}
+    </p>
+    <form action={site.formspree} method="POST" class="grid gap-3">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="you@example.com"
+        aria-label="Your email"
+        class="rounded-md border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+      />
+      <textarea
+        name="message"
+        required
+        rows="4"
+        placeholder="What are you working on?"
+        aria-label="Message"
+        class="rounded-md border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+      ></textarea>
+      <button type="submit" class="btn-primary justify-self-start font-mono text-sm">
+        send →
+      </button>
+    </form>
+  </Section>
+</Layout>

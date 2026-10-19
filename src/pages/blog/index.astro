@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../utils/content';
+
+const posts = await getPosts();
+---
+
+<Layout title="Blog" description="Notes on building software, leading teams and shipping products.">
+  <h1 class="mb-3 text-3xl font-semibold tracking-tight">Blog</h1>
+  <p class="mb-10 text-muted">Notes on building software, leading teams and shipping products.</p>
+  <PostList posts={posts} />
+</Layout>

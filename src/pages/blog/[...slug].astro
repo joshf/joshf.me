@@ -1,0 +1,32 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Tags from '../../components/Tags.astro';
+import { getPosts } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, date, tags, draft } = post.data;
+---
+
+<Layout title={title} description={description}>
+  <a href="/blog" class="font-mono text-xs text-muted hover:text-accent">← blog</a>
+  <header class="mt-6 mb-10 border-b border-border pb-8">
+    <p class="mb-2 font-mono text-xs text-muted">
+      <time datetime={date.toISOString()}>
+        {date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+      {draft && <span class="ml-2 text-accent">[draft]</span>}
+    </p>
+    <h1 class="mb-4 text-3xl font-semibold tracking-tight">{title}</h1>
+    {tags.length > 0 && <Tags tags={tags} />}
+  </header>
+  <article class="prose prose-neutral max-w-none dark:prose-invert prose-a:text-accent prose-code:before:content-none prose-code:after:content-none">
+    <Content />
+  </article>
+</Layout>

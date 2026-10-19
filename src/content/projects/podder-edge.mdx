@@ -1,0 +1,25 @@
+---
+title: Cross-promotion tracking pipeline
+description: Edge workers capture podcast downloads and link events; data pipelines turn them into cross-promo attribution.
+company: Podder
+year: 2024 — now
+tags: [Cloudflare Workers, Apache Beam, BigQuery, Python, GDPR]
+order: 4
+featured: true
+---
+
+## Context
+
+Podcasters promote each other's shows and need to know what actually worked. That depends on capturing downloads
+and clicks as close to the listener as possible, while respecting privacy.
+
+## At the edge
+
+**Cloudflare Workers** sit in the request path. They capture download and link events and filter out bots and invalid
+traffic before anything is stored. Personal data is anonymised at the point of collection, and the system is built
+with GDPR in mind.
+
+## In the pipeline
+
+**Apache Beam** jobs on Google Cloud, written in Python, turn raw events into download counts and cross-promotion
+attribution in **BigQuery**. The results feed the analytics dashboard.
