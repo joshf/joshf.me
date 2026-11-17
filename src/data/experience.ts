@@ -10,20 +10,6 @@ export type Role = {
 
 export const experience: Role[] = [
   {
-    company: 'Podder',
-    role: 'CTO',
-    period: '2021 — Present',
-    summary: 'Podcast analytics platform: cross-promotion tracking and audience personas.',
-    highlights: [
-      'Own technical strategy, architecture and delivery. Built the entire platform end to end, including the NestJS API and the React analytics dashboard.',
-      'Built cross-promotion tracking at the edge on Cloudflare Workers and Queues, processing ~4M podcast downloads a day.',
-      'Built LLM-driven audience personas and review insights, plus an in-app AI assistant.',
-      'Built Apache Beam pipelines into BigQuery for download and attribution data.',
-      'Built an MCP server so AI agents can query the platform.',
-    ],
-    tags: ['NestJS', 'React', 'Cloudflare Workers', 'BigQuery', 'Apache Beam', 'AI SDK', 'MCP'],
-  },
-  {
     company: 'Kuupanda',
     href: 'https://kuupanda.com',
     role: 'IT Team Lead & Full-Stack Engineer',
@@ -40,9 +26,23 @@ export const experience: Role[] = [
     tags: ['React', 'Next.js', 'TypeScript', 'Material UI', 'Tailwind', 'MongoDB'],
   },
   {
+    company: 'Podder',
+    role: 'CTO',
+    period: '2021 — Present',
+    summary: 'Podcast analytics platform: cross-promotion tracking and audience personas.',
+    highlights: [
+      'Own technical strategy, architecture and delivery. Built the entire platform end to end, including the NestJS API and the React analytics dashboard.',
+      'Built cross-promotion tracking at the edge on Cloudflare Workers and Queues, processing ~4M podcast downloads a day.',
+      'Built LLM-driven audience personas and review insights, plus an in-app AI assistant.',
+      'Built Apache Beam pipelines into BigQuery for download and attribution data.',
+      'Built an MCP server so AI agents can query the platform.',
+    ],
+    tags: ['NestJS', 'React', 'Cloudflare Workers', 'BigQuery', 'Apache Beam', 'AI SDK', 'MCP'],
+  },
+  {
     company: 'Stay U-nique',
     role: 'Web Developer',
-    period: 'Earlier',
+    period: '2016 — 2020',
     summary: 'Hospitality tech for tourist apartment rentals.',
     highlights: [
       'Built the bookings queue and OTA connection, syncing reservations from online travel agencies.',
