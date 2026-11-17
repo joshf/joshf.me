@@ -10,7 +10,6 @@ export const site = {
 export const socials = [
   { label: 'GitHub', href: 'https://github.com/joshf' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/joshfradley' },
-  { label: 'Stack Overflow', href: 'https://stackoverflow.com/users/392041/josh-fradley' },
   { label: 'Medium', href: 'https://medium.com/@joshfradley' },
 ];
 
