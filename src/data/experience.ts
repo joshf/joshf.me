@@ -16,7 +16,7 @@ export const experience: Role[] = [
     summary: 'Podcast analytics platform: cross-promotion tracking and audience personas.',
     highlights: [
       'Own technical strategy, architecture and delivery. Built the entire platform end to end, including the NestJS API and the React analytics dashboard.',
-      'Built cross-promotion tracking at the edge on Cloudflare Workers.',
+      'Built cross-promotion tracking at the edge on Cloudflare Workers and Queues, processing ~4M podcast downloads a day.',
       'Built LLM-driven audience personas and review insights, plus an in-app AI assistant.',
       'Built Apache Beam pipelines into BigQuery for download and attribution data.',
       'Built an MCP server so AI agents can query the platform.',
@@ -35,6 +35,7 @@ export const experience: Role[] = [
       'Built and maintain the customer order form: catalogue, delivery slots, promotions, VAT and checkout, standalone or embedded.',
       'Built the purchase invoices module, including e-invoice intake, accounting codes and bank transaction matching.',
       'Built customer messaging with scheduled, recurring and group messages.',
+      'Responsible for managing all production incidents across the platform, from triage through resolution.',
     ],
     tags: ['React', 'Next.js', 'TypeScript', 'Material UI', 'Tailwind', 'MongoDB'],
   },
