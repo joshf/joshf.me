@@ -44,7 +44,10 @@ export const experience: Role[] = [
     period: 'Earlier',
     summary: 'Hospitality tech for tourist apartment rentals.',
     highlights: [
-      'Built the guest booking engine in React.',
+      'Built the bookings queue and OTA connection, syncing reservations from online travel agencies.',
+      'Rebuilt the admin panel used to run day-to-day apartment operations.',
+      'Built the guest booking engine and guest-facing experience app in React.',
+      'Built the owner dashboard in React, giving apartment owners visibility of their properties.',
       'Built a maintenance app for managing issues across apartments.',
     ],
     tags: ['React', 'PHP'],
